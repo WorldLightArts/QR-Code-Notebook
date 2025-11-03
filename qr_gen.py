@@ -22,14 +22,14 @@ def generate_qr_codes_2(text_list, output_dir):
         try:
             font = ImageFont.truetype("montserrat.ttf", 40)
         except Exception:
-            font = ImageFont.load_default()
+            font = ImageFont.load_default(26)
 
         dummy_img = Image.new("RGB", (1, 1))
         draw = ImageDraw.Draw(dummy_img)
         if hasattr(draw, "textbbox"):
             bbox = draw.textbbox((0, 0), text, font=font)
             text_width = bbox[2] - bbox[0]
-            text_height = bbox[3] - bbox[1]
+            text_height = bbox[3] - bbox[0]
         else:
             text_width, text_height = draw.textsize(text, font=font)
 
